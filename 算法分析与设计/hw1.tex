@@ -74,7 +74,7 @@ the following assertions.
 
     a. If $t(n) \in O(g(n))$, then $g(n) \in \Omega(t(n))$.
 
-    b. $\Theta(\alpha g(n)) = \Theta(g(n))$, where $\alpha > 0$.
+    b. $\Theta(\alpha g(n)) = O(g(n))$, where $\alpha > 0$.
     
     c. $\Theta(g(n)) = O(g(n)) \cap \Omega(g(n))$.
 
@@ -89,15 +89,24 @@ the following assertions.
     $g(n) \in \Omega(t(n))$。
     \vspace{2mm}  % 指定高度，添加空行
     
-    b. 正确。 $\Theta(\alpha g(n)) = \{f(n)$:存在 $c_1 > 0$, $c_2 > 0$， $n_1 > 0$，使得当 $n \ge n_1$ 时，满足 $c_2 \alpha g(n) \le f(n) \
-    \le c_1 \alpha g(n)$。同理， $\Theta(g(n)) = \{f(n)$:存在 $d_1 >0$，$d_2 >0$，$n_2 > 0$，使得当 $n \ge n_2$ 时，满足 $d_2 g(n) \le f(n) \
-    \le d_1 g(n)$，因为 $c_1 > 0$，$c_2 > 0$，$d_1 >0$，$d_2 >0$，且 $\alpha > 0$，所以 $d_2$、$d_1$总可以取到与 $\alpha c_2$、$\alpha c_1$相等的值，\
-    因此， $\Theta(\alpha g(n))$ 和 $\Theta(g(n))$ 表示的是同一个集合，故 $\Theta(\alpha g(n)) = \Theta(g(n))$。
+    b. 错误。
     \vspace{2mm}  % 指定高度，添加空行
 
-    c. 正确。 $\Theta(g(n)) = \{f(n)$:存在 $c_1 >0$，$c_2 >0$，$n_0 > 0$，使得当 $n \ge n_0$ 时，满足 $c_2 g(n) \le f(n) \
-    \le c_1 g(n)$。 $O(g(n)) = \{f(n)$:存在 $d_1 > 0$，$n_1 > 0$，使得当 $n > n_1$ 时，满足 $f(n) \le  d_1 g(n)$。 $\Omega(g(n)) = \{f(n)$:存在 $d_2 > 0$，$n_2 > 0$ \
-    ，使得当 $n > d_2$ 时，满足 $f(n) \ge d_2 g(n)$。令 $c_2 = d_1$，$c_1 = d_2$，则这两个表示同一个集合，故 $\Theta(g(n)) = O(g(n)) \cap \Omega(g(n))$。
+    c. 正确。 
+        
+    $O(g(n)) = \{f(n)$:存在 $d_1 > 0$，$n_1 > 0$，使得当 $n > n_1$ 时，满足 $f(n) \le  d_1 g(n)\}$。 
+
+    $\Omega(g(n)) = \{h(n)$:存在 $d_2 > 0$，$n_2 > 0$，使得当 $n > d_2$ 时，满足 $h(n) \ge d_2 g(n)\}$。
+    
+    所以对 $\forall t(n) \in O(g(n)) \cap \Omega(g(n))$ 当$n \ge \max(n_1, n_2)$ 时，都有 $t(n) \le d_1 g(n)$ 和 $t(n) \ge d_2 g(n)$，\
+    即 $d_2 g(n) \le t(n) \le d_1 g(n)$，故 $t(n) \in \Theta(g(n))$。
+
+    同理，$\Theta(g(n)) = \{f(n)$:存在 $c_1 >0$，$c_2 >0$，$n_0 > 0$，使得当 $n \ge n_0$ 时，满足 $c_2 g(n) \le f(n) \le c_1 g(n)$。 
+
+    所以对 $\forall t(n) \in \Theta(g(n))$，当 $n \ge n_0$ 时，都有 $c_2 g(n) \le t(n) \le c_1 g(n)$，即 $t(n) \ge c_2 g(n)$ 和 $t(n) \le c_1 g(n)$，故 $t(n) \in O(g(n)) \cap t(n) \in \Omega(g(n))$，\
+    即 $t(n) \in O(g(n)) \cap \Omega(g(n))$。
+    
+    综上，$\Theta(g(n)) = O(g(n)) \cap \Omega(g(n))$。
     \vspace{2mm}  % 指定高度，添加空行
 
     d. 错误。
