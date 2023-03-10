@@ -12,7 +12,7 @@ int sum = 0;  // 记录有多少种方法
  * 
  * @param m 步数
  * @param n 卡路里数
- * @return int 
+ * @return int 多少种情况  
  */
 void backtrack(int m, int n)
 {
