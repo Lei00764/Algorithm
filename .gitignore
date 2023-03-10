@@ -1,2 +1,12 @@
 .DS_Store
 .vscode
+
+# tex auxillary files
+*.log
+*.aux
+*.log
+*.synctex.gz
+*.out
+*.toc
+*.lof
+*.lot
