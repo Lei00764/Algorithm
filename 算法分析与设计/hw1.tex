@@ -99,7 +99,7 @@ the following assertions.
 
     取 $d_1 = 1$，$n_1 = 1$，当 $n \ge n_1$ 时，$n^2 \ge n$，所以 $f(n) \in O(g(n))$。
 
-    $\Theta(g(n)) = \{f(n)$:存在 $c_1 >0$，$c_2 >0$，$n_0 > 0$，使得当 $n \ge n_0$ 时，满足 $c_2 g(n) \le f(n) \le c_1 g(n)$。 
+    $\Theta(g(n)) = \{f(n)$:存在 $c_1 >0$，$c_2 >0$，$n_0 > 0$，使得当 $n \ge n_0$ 时，满足 $c_2 g(n) \le f(n) \le c_1 g(n)\}$。 
 
     不存在 $c_1 > 0$，$c_2 > 0$，使得 $c_1 n \le n^2 \le c_2 n$ 恒成立，即 $n \notin \Theta(n^2)$。
 
@@ -115,7 +115,7 @@ the following assertions.
     所以对 $\forall t(n) \in O(g(n)) \cap \Omega(g(n))$ 当$n \ge \max(n_1, n_2)$ 时，都有 $t(n) \le d_1 g(n)$ 和 $t(n) \ge d_2 g(n)$，\
     即 $d_2 g(n) \le t(n) \le d_1 g(n)$，故 $t(n) \in \Theta(g(n))$。
 
-    同理，$\Theta(g(n)) = \{f(n)$:存在 $c_1 >0$，$c_2 >0$，$n_0 > 0$，使得当 $n \ge n_0$ 时，满足 $c_2 g(n) \le f(n) \le c_1 g(n)$。 
+    同理，$\Theta(g(n)) = \{f(n)$:存在 $c_1 >0$，$c_2 >0$，$n_0 > 0$，使得当 $n \ge n_0$ 时，满足 $c_2 g(n) \le f(n) \le c_1 g(n)\}$。 
 
     所以对 $\forall t(n) \in \Theta(g(n))$，当 $n \ge n_0$ 时，都有 $c_2 g(n) \le t(n) \le c_1 g(n)$，即 $t(n) \ge c_2 g(n)$ 和 $t(n) \le c_1 g(n)$，故 $t(n) \in O(g(n)) \cap t(n) \in \Omega(g(n))$，\
     即 $t(n) \in O(g(n)) \cap \Omega(g(n))$。
