@@ -9,23 +9,28 @@ using namespace std;
  * @param n 卡路里数
  * @return int 多少种情况 
  */
-int fun1(int m, int n)
+int fun(int m, int n)
 {
     if (m < 0 || n < 0 || m > n)  // 终止条件
         return 0;
     else if (m == 0 && n >= 0)
         return 1;
-    return fun1(m - 1, n - 1) + fun1(m - 2, n - 3); 
+    return fun(m - 1, n - 1) + fun(m - 2, n - 3); 
 }
 
 
 int main()
 {
-    // 样例
-    cout << fun1(6, 6) << endl;
-    cout << fun1(3, 6) << endl;
-    cout << fun1(-5, 7) << endl;
-    
+    cout << "----------------------------" << endl;
+    cout << "测试样例：" << endl;
+    cout << "input: 6 6" << endl;
+    cout << "ouput：" << fun(6, 6) << endl;
+    cout << "input: 3 6" << endl; 
+    cout << "ouput：" << fun(3, 6) << endl;
+    cout << "input: -5 7" << endl; 
+    cout << "ouput：" << fun(-5, 7) << endl;
+    cout << "----------------------------" << endl;
+
     int m, n;
     while (1) // 输入错误处理
     {
@@ -41,6 +46,6 @@ int main()
         break;
     }
     
-    cout << "ouput: " << fun1(m, n) << endl;
+    cout << "ouput: " << fun(m, n) << endl;
     return 0;
 }

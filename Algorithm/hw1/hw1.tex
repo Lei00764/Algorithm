@@ -1,5 +1,5 @@
 \documentclass[12pt, a4paper, UTF8, fontset=windows]{ctexbook}
-\usepackage{amsmath, amsthm, amssymb, amsfonts, bm, color, fancyhdr, framed, geometry, graphicx, hyperref, listings, mathrsfs, xcolor}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, bm, color, fancyhdr, framed, geometry, graphicx, hyperref, lastpage, listings, mathrsfs, xcolor}
 
 
 \linespread{1.5}
@@ -7,7 +7,6 @@
 \newcounter{problemname}
 \newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{Q\arabic{problemname}.}}{\end{shaded}\par}
 \newenvironment{solution}{\par\noindent\textbf{Ans.}}{\par}
-
 
 \geometry{left=20mm,right=20mm, top=20mm, bottom=22mm} % 页边距
 \setlength{\headheight}{15pt}
@@ -36,8 +35,10 @@ xleftmargin=3em,
 xrightmargin=3em
 }
 
- 
+
 \begin{document}
+
+\cfoot{\thepage\ / \pageref{LastPage}} % 页眉中间位添加内容：页码/总页码
 
 \thispagestyle{empty}
 
@@ -126,8 +127,25 @@ the following assertions.
     \vspace{2mm}  % 指定高度，添加空行
 
     d. 错误。
-\end{solution}
 
+    反例：
+
+    \begin{equation}
+        f(n)=\left\{
+        \begin{array}{cl}
+        1  & n\mbox{是奇数} \\
+        n  & n\mbox{是偶数} \\
+        \end{array} \right.
+    \end{equation}
+    
+    \begin{equation}
+        g(n)=\left\{
+        \begin{array}{cl}
+        n  & n\mbox{是奇数} \\
+        1  & n\mbox{是偶数} \\
+        \end{array} \right.
+    \end{equation}
+\end{solution}
 
 \newpage
 
@@ -188,10 +206,9 @@ the following assertions.
      
     a.
     \begin{lstlisting}
-    int function(int x, int n)
+    int function(int x, int n) 
     {
-        if (n == 0)
-            return 1;
+        if (n == 0) return 1;
         int t = function(x, n / 2)
         if (n % 2 == 1)
             return t * t * x;
@@ -203,17 +220,18 @@ the following assertions.
     \begin{lstlisting}
     void Sort(int A[], int low, int high)
     {
-        if (low < high)
+        if (low < high) 
         {
-            int pivot = Partition(A, low, high);
+            // pivot 下标而非值 比较合理点应该写成 povit_pos
+            int pivot = Partition(A, low, high); 
             Sort(A, low, pivot - 1);
             Sort(A, pivot + 1, high);
         }
     }
     int Partition(int A[], int low, int high)
     {
-        int pivot = A[low];
-        while (low < high)
+        int pivot = A[low];  // pivot 值！！！
+        while (low < high) 
         {
             while (low < high && A[high] >= pivot)
                 --high;
@@ -228,6 +246,7 @@ the following assertions.
     \end{lstlisting}
 \end{problem}
     
+\newpage
 
 \begin{solution}
     
@@ -250,18 +269,44 @@ the following assertions.
     
     问题规模： $n$
 
-    基本操作：Partition函数中三个while循环中的比较
+    基本操作：Partition函数执行次数
 
-    执行次数：
+    时间复杂度
 
     最优情况：每次划分都恰好将数组分成长度相等的子数组 
+    \begin{equation}
+        T(n)=\left\{
+        \begin{array}{cl}
+        0           & n = 1 \\
+        T(n/2) + \Theta(n)  & n > 1 \\
+        \end{array} \right.
+    \end{equation}   
+
+    其中，$\Theta(n)$为执行Partition函数的时间复杂度。
+
+    由数学推导可得，$T(n) \in \Theta(n\log(n))$
     
     最坏情况：初始序列有序，每次分割只产生一个子序列
+    \begin{equation}
+        T(n)=\left\{
+        \begin{array}{cl}
+        0           & n = 1 \\
+        T(n/2) + \Theta(n)  & n > 1 \\
+        \end{array} \right.
+    \end{equation}    
 
-    平均情况：
+    由数学推导可得，$T(n) \in \Theta(n^2)$
 
-    时间复杂度：
+    平均情况：总共有n种划分，每种划分出现的概率都相等
+    \begin{equation}
+        T(n)=\left\{
+        \begin{array}{cl}
+        0           & n = 1 \\
+        \sum_{i=0}^{n-1} \frac{1}{n}[A(i)+A(n-1-i)] + \Theta(n)  & n > 1 \\
+        \end{array} \right.
+    \end{equation}     
 
+    由数学推导可得，$T(n) \in \Theta(n\log(n))$
 \end{solution}
 
 \newpage 
