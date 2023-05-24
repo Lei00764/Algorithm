@@ -145,12 +145,12 @@ class SeamCarver:
             print(f"[INFO]: 一轮耗时{time.time() - t}，已移除{self.count}列")
 
         print(self.out_image.shape)
-        cv2.imwrite("./output/out_image1.png", self.out_image)
+        cv2.imwrite("./output/out_image3.png", self.out_image)
 
 
 if __name__ == '__main__':
     t = time.time()
-    file_name = './src/image1.png'
+    file_name = './src/image3.png'
     in_image = cv2.imread(file_name).astype(np.float64)  # 读取原始图片
 
     # 设置输出图片尺寸
